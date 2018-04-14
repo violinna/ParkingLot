@@ -44,7 +44,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void park() throws Exception {
+    public void tiket() throws Exception {
         parkingLot.tiket("KA-01-HH-1234", "White");
         parkingLot.tiket("KA-01-HH-9999", "White");
         assertEquals("Sorry,parkinglotisnotcreated\n" +
@@ -58,7 +58,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void leave() throws Exception {
+    public void carLeave() throws Exception {
         parkingLot.carLeave("2");
         assertEquals("Sorry,parkinglotisnotcreated", outContent.toString().trim().replace(" ", ""));
         parkingLot.createParkingLot("6");
@@ -77,7 +77,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void status() throws Exception {
+    public void parkingStatus() throws Exception {
         parkingLot.parkingStatus();
         assertEquals("Sorry,parkinglotisnotcreated", outContent.toString().trim().replace(" ", ""));
         parkingLot.createParkingLot("6");
@@ -98,7 +98,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void getRegistrationNumbersFromColor() throws Exception {
+    public void getAllRegNumByColor() throws Exception {
         parkingLot.getAllRegNumByColor("White");
         assertEquals("Sorry,parkinglotisnotcreated", outContent.toString().trim().replace(" ", ""));
         parkingLot.createParkingLot("6");
@@ -129,7 +129,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void getSlotNumbersFromColor() throws Exception {
+    public void getSlotNumByColor() throws Exception {
         parkingLot.getSlotNumByColor("White");
         assertEquals("Sorry,parkinglotisnotcreated", outContent.toString().trim().replace(" ", ""));
         parkingLot.createParkingLot("6");
@@ -161,7 +161,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void getSlotNumberFromRegNo() throws Exception {
+    public void getSlotNumByRegNum() throws Exception {
         parkingLot.getSlotNumByRegNum("KA-01-HH-1234");
         assertEquals("Sorry,parkinglotisnotcreated", outContent.toString().trim().replace(" ", ""));
         parkingLot.createParkingLot("6");

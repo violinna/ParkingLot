@@ -29,20 +29,20 @@ public class Command {
                 ParkingController.class.getMethod("createParkingLot", 
                         String.class));
         commandsMap.put("park", 
-                ParkingController.class.getMethod("park", String.class, 
+                ParkingController.class.getMethod("tiket", String.class, 
                         String.class));
         commandsMap.put("leave", 
-                ParkingController.class.getMethod("leave", String.class));
+                ParkingController.class.getMethod("carLeave", String.class));
         commandsMap.put("status", 
-                ParkingController.class.getMethod("status"));
+                ParkingController.class.getMethod("parkingStatus"));
         commandsMap.put("registration_numbers_for_cars_with_colour", 
-                ParkingController.class.getMethod("getRegistrationNumbersFromColor", 
+                ParkingController.class.getMethod("getAllRegNumByColor", 
                         String.class));
         commandsMap.put("slot_numbers_for_cars_with_colour", 
-                ParkingController.class.getMethod("getSlotNumbersFromColor", 
+                ParkingController.class.getMethod("getSlotNumByColor", 
                         String.class));
         commandsMap.put("slot_number_for_registration_number", 
-                ParkingController.class.getMethod("getSlotNumberFromRegNo", 
+                ParkingController.class.getMethod("getSlotNumByRegNum", 
                         String.class));
     }
 }
