@@ -11,17 +11,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import parkinglot.Model.Slots;
 
 /**
  *
  * @author violin
  */
 public class ParkingController implements ParkingInterface{
-    int CAPACITY = 0;
-    
+    Slots slot = new Slots();
     Car car = new Car();
     
-    ArrayList<Integer> slotList;
+    int CAPACITY = slot.getCapacity();
+    
+    ArrayList<Integer> slotList = slot.getSlotList();
     // Map slot, car
     Map<String, Car> Map1;
     // regNumber, slot
