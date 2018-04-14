@@ -7,7 +7,7 @@ package parkinglot.Interface;
 
 /**
  *
- * @author hp
+ * @author violin
  */
 public interface ParkingInterface {
     void getAllRegNumByColor(String color);

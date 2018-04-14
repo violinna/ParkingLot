@@ -16,7 +16,7 @@ import java.util.Map;
  *
  * @author violin
  */
-public class ParkingImpl implements ParkingInterface{
+public class ParkingController implements ParkingInterface{
     int CAPACITY = 0;
     
     Car car = new Car();
@@ -146,7 +146,7 @@ public class ParkingImpl implements ParkingInterface{
                 }
             }
         } else {
-            System.out.println("Registration number not found");
+            System.out.println("Not found");
             System.out.println();
         }
     }
@@ -175,7 +175,7 @@ public class ParkingImpl implements ParkingInterface{
             
             System.out.println();
         } else {
-            System.out.println("Slot number not available");
+            System.out.println("Not found");
             System.out.println();
         }
     }
@@ -187,7 +187,7 @@ public class ParkingImpl implements ParkingInterface{
         } else if (Map2.containsKey(regNum)) {
             System.out.println(Map2.get(regNum));
         } else {
-            System.out.println("Slot number not available");
+            System.out.println("Not found");
             System.out.println();
         }
     }
