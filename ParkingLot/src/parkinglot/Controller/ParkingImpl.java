@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parkinglot;
+package parkinglot.Controller;
 
+import parkinglot.Interface.ParkingInterface;
+import parkinglot.Model.Car;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,27 +16,29 @@ import java.util.Map;
  *
  * @author violin
  */
-public class Parking {
-    int MAX_SIZE = 0;
+public class ParkingImpl implements ParkingInterface{
+    int CAPACITY = 0;
+    
+    Car car = new Car();
     
     ArrayList<Integer> slotList;
     // Map slot, car
     Map<String, Car> Map1;
-    // Map regNumber, slot
+    // regNumber, slot
     Map<String, String> Map2;
-    // Map color, List of RegNumber
+    // Map for color, List for Registrasi
     Map<String, ArrayList<String>> Map3;
     
     public void createParkingLot(String count) {
         try {
-            MAX_SIZE = Integer.parseInt(count);
+            CAPACITY = Integer.parseInt(count);
         } catch (Exception e) {
             System.out.println("Invalid lot count");
             System.out.println();
         }
         slotList = new ArrayList<Integer>() {};
         
-        for (int i=1; i<= MAX_SIZE; i++) {
+        for (int i=1; i<= CAPACITY; i++) {
             slotList.add(i);
         }
         
@@ -46,10 +50,10 @@ public class Parking {
     }
     
     public void tiket(String regNumber, String color) {
-        if (MAX_SIZE == 0) {
+        if (CAPACITY == 0) {
             System.out.println("Sorry, parking lot is not created");
             System.out.println();
-        } else if (Map1.size() == MAX_SIZE) {
+        } else if (Map1.size() == CAPACITY) {
             System.out.println("Sorry, parking lot is full");
             System.out.println();
         } else {
@@ -74,20 +78,20 @@ public class Parking {
         }
     }
     
-    public void CarLeave(String slotNumber) {
-        if (MAX_SIZE == 0) {
+    public void carLeave(String slotNumber) {
+        if (CAPACITY == 0) {
             System.out.println("Sorry, parking lot is not created");
             System.out.println();
         } else if (Map1.size() > 0) {
-            Car carLeave = Map1.get(slotNumber);
-            if (carLeave != null) {
+            car = Map1.get(slotNumber);
+            if (car != null) {
                 Map1.remove(slotNumber);
-                Map1.remove(carLeave.regNumber);
+                Map1.remove(car.getRegNumber());
                 
-                ArrayList<String> regNumberList = Map3.get(carLeave.color);
+                ArrayList<String> regNumberList = Map3.get(car.getColor());
                 
-                if (regNumberList.contains(carLeave.regNumber)) {
-                    regNumberList.remove(carLeave.regNumber);
+                if (regNumberList.contains(car.getRegNumber())) {
+                    regNumberList.remove(car.getRegNumber());
                 }
                
                 slotList.add(Integer.parseInt(slotNumber));
@@ -105,18 +109,17 @@ public class Parking {
     }
     
     public void parkingStatus() {
-        if (MAX_SIZE == 0) {
+        if (CAPACITY == 0) {
             System.out.println("Sorry, parking lot is not created");
             System.out.println();
         } else if (Map1.size() > 0) {
             System.out.println("Slot No.\t Registration No.\t Color");
-            Car car;
-            for (int i = 1; i <= MAX_SIZE; i++) {
+            for (int i = 1; i <= CAPACITY; i++) {
                 String indexCar = Integer.toString(i);
                 
                 if (Map1.containsKey(indexCar)) {
                     car = Map1.get(indexCar);
-                    System.out.println(i + "\t" + car.regNumber + "\t" + car.color);
+                    System.out.println(i + "\t" + car.getRegNumber() + "\t" + car.getColor());
                 }
             }
             System.out.println();
@@ -125,5 +128,68 @@ public class Parking {
             System.out.println();
         }
     }
+
+    @Override
+    public void getAllRegNumByColor(String color) {
+        if (CAPACITY == 0) {
+            System.out.println("Sorry, parking lot is not created");
+            System.out.println();
+        } else if (Map3.containsKey(color)) {
+            ArrayList<String> regNumList = Map3.get(color);
+            System.out.println();
+            
+            for (int i=0; i < regNumList.size(); i++) {
+                if (!(i==regNumList.size() - 1)){
+                    System.out.print(regNumList.get(i) + ",");
+                } else {
+                    System.out.print(regNumList.get(i));
+                }
+            }
+        } else {
+            System.out.println("Registration number not found");
+            System.out.println();
+        }
+    }
     
+    public void getSlotNumByColor(String color) {
+        if (CAPACITY == 0) {
+            System.out.println("Sorry, parking lot is not created");
+            System.out.println();
+        } else if (Map3.containsKey(color)) {
+            ArrayList<String> regNoList = Map3.get(color);
+            System.out.println();
+            
+            for (int i=0; i < regNoList.size(); i++) {
+                slotList.add(Integer.valueOf(Map2.get(regNoList.get(i))));
+            }
+            
+            Collections.sort(slotList);
+            
+            for (int j=0; j < slotList.size(); j++) {
+                if (!(j == slotList.size() - 1)) {
+                    System.out.print(slotList.get(j) + ",");
+                } else {
+                    System.out.print(slotList.get(j));
+                }
+            }
+            
+            System.out.println();
+        } else {
+            System.out.println("Slot number not available");
+            System.out.println();
+        }
+    }
+    
+    public void getSlotNumByRegNum(String regNum) {
+        if (CAPACITY == 0) {
+            System.out.println("Sorry, parking lot is not created");
+            System.out.println();
+        } else if (Map2.containsKey(regNum)) {
+            System.out.println(Map2.get(regNum));
+        } else {
+            System.out.println("Slot number not available");
+            System.out.println();
+        }
+    }
+
 }

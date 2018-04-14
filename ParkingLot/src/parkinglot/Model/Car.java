@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parkinglot;
+package parkinglot.Model;
 
 /**
  *
  * @author violin
  */
 public class Car {
-    String regNumber, color;
+    private String regNumber, color;
 
     public Car() {
     }
@@ -28,8 +28,6 @@ public class Car {
         this.regNumber = regNumber;
     }
        
- 
-
     public String getColor() {
         return color;
     }
