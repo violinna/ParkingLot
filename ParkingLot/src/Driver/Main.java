@@ -26,8 +26,6 @@ public class Main {
                 // Run an infinite loop
                 for (;;) {
                     try {
-                        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-                        String inputString = bufferRead.readLine();
                         if (inputString.equalsIgnoreCase("quit")) {
                             break;
                         } else if ((inputString == null) || (inputString.isEmpty())) {
