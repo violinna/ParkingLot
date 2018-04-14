@@ -26,12 +26,14 @@ public class Main {
                 // Run an infinite loop
                 for (;;) {
                     try {
-                        if (inputString.equalsIgnoreCase("quit")) {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                        String input = br.readLine();
+                        if (input.equalsIgnoreCase("quit")) {
                             break;
-                        } else if ((inputString == null) || (inputString.isEmpty())) {
-                            
+                        } else if ((input == null) || (input.isEmpty())) {
+                            converter.parseFileInput(args[0]);
                         } else {
-                            converter.parseTextInput(inputString.trim());
+                            converter.parseTextInput(input.trim());
                         }
                     } catch(IOException e) {
                         System.out.println("Oops! Error in reading the input from console.");
@@ -44,7 +46,7 @@ public class Main {
                 converter.parseFileInput(args[0]);
                 break;
             default:
-                System.out.println("Invalid input. Usage: java -jar <jar_file_path> <input_file_path>");
+                System.out.println("Invalid input.");
         }
     }
     
