@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author hp
+ * @author violin
  */
 public class Slots {
     int Capacity = 0;
