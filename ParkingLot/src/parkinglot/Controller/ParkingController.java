@@ -121,7 +121,7 @@ public class ParkingController implements ParkingInterface{
                 
                 if (Map1.containsKey(indexCar)) {
                     car = Map1.get(indexCar);
-                    System.out.println(i + "\t" + car.getRegNumber() + "\t" + car.getColor());
+                    System.out.println(i + "\t" + car.getRegNumber() + "\t\t" + car.getColor());
                 }
             }
             System.out.println();

@@ -20,7 +20,7 @@ public class Main {
       InputConverter converter = new InputConverter();
         switch (args.length) {
             case 0:
-                System.out.println("Please enter 'exit' to quit");
+                System.out.println("Please enter 'quit' to close the program");
                 System.out.println("Waiting for input...");
                 // Interactive command-line input/output
                 // Run an infinite loop
@@ -28,10 +28,10 @@ public class Main {
                     try {
                         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
                         String inputString = bufferRead.readLine();
-                        if (inputString.equalsIgnoreCase("exit")) {
+                        if (inputString.equalsIgnoreCase("quit")) {
                             break;
                         } else if ((inputString == null) || (inputString.isEmpty())) {
-                            // Do nothing
+                            
                         } else {
                             converter.parseTextInput(inputString.trim());
                         }
